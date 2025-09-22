@@ -19,7 +19,11 @@ def testGraph(g_string,g2string):
     print(validation_result[2])
 
 
+print("This code will run tests and provide sample details of policy comparisons.")
+
 print("All tests successful: "+str(tests.run_tests()))
+
+print("\nExamples of JSON comparison reponses:\n")
 
 json_result = ODRL2SHACL.compare_policies_from_string(examples.upcast_example_1_minimal,examples.upcast_example_2_minimal,"requester","provider")
 

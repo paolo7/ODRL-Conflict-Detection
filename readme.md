@@ -17,9 +17,31 @@ Required libraries:
 * rdflib
 * pyshacl
 
-## Usage
+## Instructions
 
-To compare two policies, call the `compare_policies` or the `compare_policies_from_string` functions in `ODRL2SHACL.py`.
+After installing the requirements, you can run the `compare_policies.py` file to compare two policies.
+
+If you run this code without arguments, it will ask you about the file path to the two policies to compare, 
+and their roles, using in-line inputs.
+
+If you run it with four arguments, it will automatically run the policy comparison and return the result.
+The four arguments it expects are:
+1. The path to the first policy
+2. The path to the second policy
+3. The role of the first policy
+4. The role of the second policy
+
+For example, using the provided sample policies you can run the following command to verify that the stricter policy does not 
+conflict with the more permissive one, if the permissive one is the one of the provider. If you swap the roles (or the 
+policies), it will detect a conflict.
+```
+python .\compare_policies.py .\example_policies\example_strict.json .\example_policies\example_permissive.json requester provider
+```
+
+
+## Programmatic Usage Instructions
+
+To compare two policies from Python, call the `compare_policies` or the `compare_policies_from_string` functions in `ODRL2SHACL.py`.
 This `compare_policies_from_string` function takes two mandatory arguments: the first two are two string serialisations of ODRL in one of the following 
 formats: 'json-ld', 'turtle', 'xml', 'nt', 'n3', 'trig', 'nquads'. The remaining two optional arguments, `role_one` and 
 `role_two` are one of the following strings "any", "requester", "provider". You can either set one role as provider and 
